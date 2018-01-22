@@ -18,11 +18,11 @@ import java.util.Map;
 public class SwitchConfigByJson {
 
     public Map<String, List<SwitchBaseConfig>> getConfig() {
-        String whiteListTest = "[{\"switchorName\":\"blackAndWhiteListSwitcher\",\"priority\":1,\"switchStatus\":\"ON\",\"whiteList\":[\"asas\",\"zzz\"]}]";
-        String percentTest = "[{\"switchorName\":\"percentSwitch\",\"priority\":2,\"switchStatus\":\"ON\",\"percent\":\"1/1\"}]";
-        String timeTest = "[{\"switchorName\":\"timeSwitch\",\"priority\":3,\"switchStatus\":\"ON\",\"startTime\":\"2018-01-18 17:18:00\",\"endTime\":\"2018-01-19 17:18:00\"}]";
+        String whiteListTest = "[{\"switcherName\":\"blackAndWhiteListSwitcher\",\"priority\":1,\"switchStatus\":\"ON\",\"whiteList\":[\"asas\",\"zzz\"]}]";
+        String percentTest = "[{\"switcherName\":\"percentSwitch\",\"priority\":2,\"switchStatus\":\"ON\",\"percent\":\"1/1\"}]";
+        String timeTest = "[{\"switcherName\":\"timeSwitch\",\"priority\":3,\"switchStatus\":\"ON\",\"startTime\":\"2018-01-18 17:18:00\",\"endTime\":\"2018-01-19 17:18:00\"}]";
 
-        String allTest = "[{\"switchorName\":\"blackAndWhiteListSwitcher\",\"priority\":1,\"switchStatus\":\"ON\",\"whiteList\":[\"asas\",\"sasa\"]},{\"switchorName\":\"percentSwitch\",\"priority\":2,\"switchStatus\":\"ON\",\"percent\":\"10/10\"},{\"switchorName\":\"timeSwitch\",\"priority\":3,\"switchStatus\":\"ON\",\"startTime\":\"2018-01-16 17:18:00\",\"endTime\":\"2018-01-16 17:18:00\"}]";
+        String allTest = "[{\"switcherName\":\"blackAndWhiteListSwitcher\",\"priority\":1,\"switchStatus\":\"ON\",\"whiteList\":[\"asas\",\"sasa\"]},{\"switcherName\":\"percentSwitch\",\"priority\":2,\"switchStatus\":\"ON\",\"percent\":\"10/10\"},{\"switcherName\":\"timeSwitch\",\"priority\":3,\"switchStatus\":\"ON\",\"startTime\":\"2018-01-16 17:18:00\",\"endTime\":\"2018-01-16 17:18:00\"}]";
 
         Map<String,List<SwitchBaseConfig>> switchBeanMap = new HashMap<String,List<SwitchBaseConfig>>();
 
@@ -39,7 +39,7 @@ public class SwitchConfigByJson {
         List<JSONObject> switchConfigList = GsonUtils.fromJson(config, new TypeToken<List<JSONObject>>() {});
 
         for (JSONObject object : switchConfigList){
-            String beanClassName = object.get("switchorName").toString();
+            String beanClassName = object.get("switcherName").toString();
             SwitchBaseConfig switchBaseConfig = (SwitchBaseConfig) GsonUtils.fromJson(object.toJSONString(), SwitchEnum.getSwitchConfigByName(beanClassName));
             configList.add(switchBaseConfig);
         }
