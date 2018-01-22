@@ -1,0 +1,23 @@
+[
+  {
+    "switcherName": "blackAndWhiteListSwitcher",
+    "priority": 1,
+    "switchStatus":"ON",
+    "whiteList":["asas","sasa","ZZ","ordertest408"]
+  },
+  {
+    "switcherName": "percentSwitch",
+    "priority": 2,
+    "switchStatus":"ON",
+    "startIndex":"0",
+    "endIndex":"1",
+    "percentBaseNum":"1000"
+  },
+  {
+    "switcherName": "timeSwitch",
+    "priority": 3,
+    "switchStatus":"ON",
+    "startTime":"2018-01-16 17:18:00",
+    "endTime":"2018-01-18 17:18:00"
+  }
+]
