@@ -7,10 +7,14 @@ import java.io.Serializable;
  */
 public class BizDynamicConfig implements Serializable {
 
-    //key-业务类型
+    /**
+     * key-业务类型
+     */
     private String bizType;
 
-    //value-开关配置
+    /**
+     * value-开关配置
+     */
     private String jsonConfig;
 
     public String getBizType() {

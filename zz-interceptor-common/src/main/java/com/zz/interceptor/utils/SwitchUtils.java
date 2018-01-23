@@ -19,7 +19,7 @@ import java.util.*;
 public class SwitchUtils {
 
     static final Logger logger = LoggerFactory.getLogger(SwitchUtils.class);
-    private static final String SWITCHER_NAME = "switchorName";
+    private static final String SWITCHER_NAME = "switcherName";
 
     public static void initSwitchConfig(Map<String, String> map) {
         //初始化开关配置信息
@@ -28,7 +28,7 @@ public class SwitchUtils {
                 SwitchConfig.switcherConfigMap = getConfigByList(SwitchUtils.transformDynamicConfig(map));
                 logger.info("SwitchConfig.SwitcherConfigMap:{}", JSON.toJSONString(SwitchConfig.switcherConfigMap));
             } catch (Exception e) {
-                logger.info("SwitchUccConfigListener.getConfigByList is error");
+                logger.error("SwitchUccConfigListener.getConfigByList is error",e.getMessage());
             }
         }else {
             logger.info("SwitchUccConfigListener.config is null");
