@@ -12,7 +12,9 @@ import java.util.Map;
  */
 public class ConfClientByJSON extends CommonClient implements ConfClient {
 
+
     public ConfClientByJSON(String path){
+        System.out.println("Refresh========");
         initData(path);
     }
 

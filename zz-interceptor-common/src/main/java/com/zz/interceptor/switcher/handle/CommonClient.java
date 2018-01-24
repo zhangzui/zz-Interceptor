@@ -1,10 +1,14 @@
 package com.zz.interceptor.switcher.handle;
 
+import com.zz.interceptor.schedul.FetchBlockingThread;
 import com.zz.interceptor.utils.MyFileUtils;
 
 import java.io.File;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by zhangzuizui on 2018/1/23.
@@ -12,11 +16,22 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CommonClient {
 
     private static final String BACK_PATH;
+    private static final long initialDelay = 5;
+    private static final long period = 1;
+    private final ScheduledExecutorService service;
     final ConcurrentHashMap<String, String> lockMap = new ConcurrentHashMap();
     private ConcurrentHashMap<String, Map<String, String>> dataCache = new ConcurrentHashMap();
+    private ConcurrentHashMap<String, String> map = new ConcurrentHashMap();
+
 
     static {
         BACK_PATH = System.getProperty("user.home") + File.separator + "config_center" + File.separator;
+    }
+
+    public CommonClient(){
+        this.service = Executors.newScheduledThreadPool(3);
+        // 从现在开始1秒钟之后，每隔1秒钟执行一次job1
+        service.scheduleAtFixedRate(new FetchBlockingThread(BACK_PATH,map), initialDelay, period, TimeUnit.SECONDS);
     }
 
     public static void ergodic(File file, Map<String, String> map) {
