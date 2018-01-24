@@ -47,7 +47,7 @@ public class SwitchManager {
 
         boolean result = false;
         long startTime = System.currentTimeMillis();
-        try {
+
             List<SwitchBaseConfig> switchBaseConfigs = SwitchConfig.getSwitchConfig(switchDimension.getBizType().toUpperCase());
             if(CollectionUtils.isNotEmpty(switchBaseConfigs)){
                 for(SwitchBaseConfig switchBean : switchBaseConfigs){
@@ -62,9 +62,7 @@ public class SwitchManager {
                     }
                 }
             }
-        } catch (Exception e) {
-            logger.error("doSwitch,error:{}", e.getMessage());
-        }
+
         long endTime = System.currentTimeMillis();
         logger.info("result:{},开关执行耗时ms：{}", result, endTime-startTime );
         return result;

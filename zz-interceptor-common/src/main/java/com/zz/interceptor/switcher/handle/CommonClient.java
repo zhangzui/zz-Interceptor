@@ -21,8 +21,6 @@ public class CommonClient {
     private final ScheduledExecutorService service;
     final ConcurrentHashMap<String, String> lockMap = new ConcurrentHashMap();
     private ConcurrentHashMap<String, Map<String, String>> dataCache = new ConcurrentHashMap();
-    private ConcurrentHashMap<String, String> map = new ConcurrentHashMap();
-
 
     static {
         BACK_PATH = System.getProperty("user.home") + File.separator + "config_center" + File.separator;
@@ -30,8 +28,8 @@ public class CommonClient {
 
     public CommonClient(){
         this.service = Executors.newScheduledThreadPool(3);
-        // 从现在开始1秒钟之后，每隔1秒钟执行一次job1
-        service.scheduleAtFixedRate(new FetchBlockingThread(BACK_PATH,map), initialDelay, period, TimeUnit.SECONDS);
+        // 从现在开始5秒钟之后，每隔1秒钟执行一次job1
+        service.scheduleAtFixedRate(new FetchBlockingThread(BACK_PATH), initialDelay, period, TimeUnit.SECONDS);
     }
 
     public static void ergodic(File file, Map<String, String> map) {

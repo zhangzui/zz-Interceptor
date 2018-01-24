@@ -16,10 +16,14 @@ public class SwitchConfig {
     public static Map<String, List<SwitchBaseConfig>> switcherConfigMap;
 
     public static List<SwitchBaseConfig> getSwitchConfig(String key){
-        List<SwitchBaseConfig> switchBeanList = switcherConfigMap.get(key);
-        if(CollectionUtils.isEmpty(switchBeanList)){
-            switchBeanList = switcherConfigMap.get(DEFAULT_KEY);
+        if(switcherConfigMap != null){
+            List<SwitchBaseConfig> switchBeanList = switcherConfigMap.get(key);
+            if(CollectionUtils.isEmpty(switchBeanList)){
+                switchBeanList = switcherConfigMap.get(DEFAULT_KEY);
+            }
+            return switchBeanList;
+        }else {
+            throw new RuntimeException("switcherConfigMap is null, please chack the config files in classPath/interceptor/");
         }
-        return switchBeanList;
     }
 }

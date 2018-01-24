@@ -15,7 +15,7 @@ public class TestSwitch {
 
     @Before
     public void beforeTest(){
-        CommonClient commonClient = new ConfClientByJSON("interceptor");
+        CommonClient commonClient = new CommonClient();
     }
     /**
      * 白名单测试

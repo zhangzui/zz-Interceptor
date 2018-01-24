@@ -11,7 +11,7 @@ public class ScheduledExe {
 
     public ScheduledExe() {
         this.scheduledExecutor = Executors.newScheduledThreadPool(1,new MyThreadFactory());
-        this.scheduledExecutor.scheduleWithFixedDelay(new FetchBlockingThread("sasa", new ConcurrentHashMap<String, String>()), 3L, 5, TimeUnit.SECONDS);
+        this.scheduledExecutor.scheduleWithFixedDelay(new FetchBlockingThread("sasa"), 3L, 5, TimeUnit.SECONDS);
     }
 
     public static void main(String[] args) {
