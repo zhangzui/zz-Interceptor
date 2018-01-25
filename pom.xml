@@ -6,7 +6,7 @@
 
 
     <groupId>com.zz.intercetor</groupId>
-    <artifactId>zz-intercetor</artifactId>
+    <artifactId>zz-Interceptor</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
