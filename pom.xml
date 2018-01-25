@@ -20,7 +20,7 @@
 
 
     <modules>
-        <module>zz-interceptor-common</module>
+        <module>zz-interceptor</module>
         <module>zz-listence</module>
     </modules>
     <dependencies>
