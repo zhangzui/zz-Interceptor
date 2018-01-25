@@ -3,6 +3,8 @@ package com.zz.listence.common;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -28,6 +30,8 @@ public class EventProcessor {
      * 线程池
      */
     private ExecutorService eventPool = Executors.newFixedThreadPool(5);
+
+    private Map<Class<? extends Event>,EventListener> cacheEventListener = new HashMap<Class<? extends Event>, EventListener>();
     
     private EventProcessor() { }
 
@@ -54,7 +58,13 @@ public class EventProcessor {
 		public Consumer(Event event) {
 			this.event = event;
 			try {
-				this.eventListener = event.bindEventListener();
+				if(cacheEventListener.get(event.getClass()) == null){
+					EventListener listener = event.bindEventListener();
+					cacheEventListener.put(event.getClass(),listener);
+					this.eventListener = listener;
+				}else {
+					this.eventListener = event.bindEventListener();
+				}
 			} catch (Exception e) {
 				LOGGER.error("EventProcessor Consumer init error", e);
 			}

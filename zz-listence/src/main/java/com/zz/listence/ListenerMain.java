@@ -9,6 +9,7 @@ import com.zz.listence.common.EventProcessor;
 public class ListenerMain {
     
     public static void main(String[] args) {
+        
         EventProcessor.getInstance().startEvent();
         for (int i = 0; i < 10; i++) {
             SmsEvent smsEvent = new SmsEvent();
