@@ -8,6 +8,8 @@ import com.zz.interceptor.switcher.handle.ConfClientByJSON;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+
 /**
  * Created by zhangzuizui on 2018/1/18.
  */
@@ -15,16 +17,18 @@ public class TestSwitch {
 
     @Before
     public void beforeTest(){
-        CommonClient commonClient = new CommonClient();
+        new ConfClientByJSON("interceptor");
+
     }
     /**
      * 白名单测试
      */
     @Test
-    public void testList(){
+    public void testList() throws InterruptedException {
+        CommonClient commonClient = new CommonClient();
         if(SwitchManager.getSwitchManager().doSwitch(new SwitchDimension("default","ordertest408"))){
             System.out.println("ssss");
-            return;
+
         }
         System.out.println("执行逻辑-----");
     }

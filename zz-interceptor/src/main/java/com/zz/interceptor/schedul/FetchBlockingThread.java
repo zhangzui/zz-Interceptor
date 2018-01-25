@@ -17,6 +17,6 @@ public class FetchBlockingThread implements Runnable {
 
     @Override
     public void run() {
-        ConfClientByJSON confClientByJSON = new ConfClientByJSON(path);
+        ConfClientByJSON confClientByJSON = new ConfClientByJSON("interceptor");
     }
 }

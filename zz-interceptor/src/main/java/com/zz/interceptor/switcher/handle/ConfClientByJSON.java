@@ -12,7 +12,10 @@ import java.util.Map;
  */
 public class ConfClientByJSON extends CommonClient implements ConfClient {
 
-
+    private static String defaultPath = null;
+    static {
+        defaultPath = ConfClientByJSON.class.getClassLoader().getResource("interceptor/").toString();
+    }
     public ConfClientByJSON(String path){
         System.out.println("Refresh========");
         initData(path);
