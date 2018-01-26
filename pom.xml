@@ -22,7 +22,24 @@
     <modules>
         <module>zz-interceptor</module>
         <module>zz-listence</module>
+        <module>zz-schedule</module>
     </modules>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <project_env>dev</project_env>
+                <!-- 调度中心配置 -->
+                <schedule.server>http://172.25.47.136:8080</schedule.server>
+                <schedule.appId>overseas_iou_job</schedule.appId>
+                <schedule.secret>25b1082a0e12477985ce9be55575dc94</schedule.secret>
+                <schedule.maxConcurrentNo>20</schedule.maxConcurrentNo>
+
+                <akka.seed.nodes>"akka.tcp://cfworkerbizSys@127.0.0.1:2551"</akka.seed.nodes>
+            </properties>
+        </profile>
+    </profiles>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>

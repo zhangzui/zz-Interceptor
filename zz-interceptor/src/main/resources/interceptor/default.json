@@ -4,5 +4,11 @@
     "priority": 1,
     "switchStatus":"ON",
     "whiteList":["asas","sasa","ZZ","ordertest408"]
+  },
+  {
+    "switcherName": "blackAndWhiteListSwitcher",
+    "priority": 1,
+    "switchStatus":"ON",
+    "blackList":["sasa"]
   }
 ]
